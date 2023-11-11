@@ -12,6 +12,26 @@ fn main() {
     let z: f64 = x - y;
 
     println!("{} {}", z, z.abs() < 0.001);
+
+    println!("default status {:?}", Status::default());
+}
+
+#[derive(Debug)]
+enum Status {
+    Open,
+    Closed,
+}
+
+impl Status {
+    fn default() -> Self {
+        Status::Open
+    }
+}
+
+impl Default for Status {
+    fn default() -> Self {
+        Status::Closed
+    }
 }
 
 trait Provider {
