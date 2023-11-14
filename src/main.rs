@@ -1,4 +1,5 @@
 use rust_decimal::Decimal;
+use xlsxwriter::Workbook;
 
 fn main() {
     let provider = get_provider("internal").unwrap();
@@ -10,6 +11,8 @@ fn main() {
     let x = 1267906.43;
     let y = 1267906.4299999997;
     let z: f64 = x - y;
+
+    let _ = Workbook::new("tmp/test.xlsx").unwrap();
 
     println!("{} {}", z, z.abs() < 0.001);
 

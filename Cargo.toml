@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 rust_decimal = "1.30.0"
+xlsxwriter = "0.6.0"
