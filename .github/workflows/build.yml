@@ -20,22 +20,24 @@ jobs:
       #   run: sudo apt-get update && sudo apt-get install -y build-essential pkg-config libssl-dev musl-tools llvm-dev libclang-dev clang
       # - name: Install apt deps
       #   run: sudo apt-get update && sudo apt-get install -y llvm-dev libclang-dev clang musl-tools
-      - name: Install LLVM and Clang
-        uses: KyleMayes/install-llvm-action@v1
-        with:
-          version: "17.0.2"
+      # - name: Install LLVM and Clang
+      #   uses: KyleMayes/install-llvm-action@v1
+      #   with:
+      #     version: "17.0.2"
       
       # - name: Symlink libclang.so (Linux)
       #   run: sudo ln -s libclang-11.so.1 /lib/x86_64-linux-gnu/libclang.so
       #   working-directory: ${{ env.LLVM_PATH }}/lib
-      - name: Compile and release
-        uses: rust-build/rust-build.action@v1.4.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          RUSTTARGET: ${{ matrix.target }}
-          # SRC_DIR: ${{ matrix.package }}
-          # STATIC_LINKING: false
-          UPLOAD_MODE: none
+      # - name: Compile and release
+      #   uses: rust-build/rust-build.action@v1.4.4
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     RUSTTARGET: ${{ matrix.target }}
+      #     # SRC_DIR: ${{ matrix.package }}
+      #     # STATIC_LINKING: false
+      #     UPLOAD_MODE: none
+      - name: Build
+        run: cargo build --release
       - name: Check output
-        run: ls -laR output
+        run: ls -la target/release
