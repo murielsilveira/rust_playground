@@ -19,11 +19,11 @@ jobs:
       # - name: Install apt deps
       #   run: sudo apt-get update && sudo apt-get install -y build-essential pkg-config libssl-dev musl-tools llvm-dev libclang-dev clang
       - name: Install apt deps
-        run: sudo apt-get update && sudo apt-get install -y build-essential pkg-config libssl-dev musl-tools llvm-dev libclang-dev clang clang-static
-      - name: Install LLVM and Clang
-        uses: KyleMayes/install-llvm-action@v1
-        with:
-          version: "10.0"
+        run: sudo apt-get update && sudo apt-get install -y build-essential pkg-config libssl-dev musl-tools llvm-dev libclang-dev clang
+      # - name: Install LLVM and Clang
+      #   uses: KyleMayes/install-llvm-action@v1
+      #   with:
+      #     version: "10.0"
       
       # - name: Symlink libclang.so (Linux)
       #   run: sudo ln -s libclang-11.so.1 /lib/x86_64-linux-gnu/libclang.so
