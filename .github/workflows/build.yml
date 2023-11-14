@@ -1,0 +1,37 @@
+name: build
+
+on:
+  push:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        target: [x86_64-unknown-linux-musl]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      # - name: Install apt deps
+      #   run: sudo apt-get update && sudo apt-get install -y pkg-config libssl-dev musl-tools 
+      # - name: Install apt deps
+      #   run: sudo apt-get update && sudo apt-get install -y build-essential pkg-config libssl-dev musl-tools llvm-dev libclang-dev clang
+      # - name: Install LLVM and Clang
+      #   uses: KyleMayes/install-llvm-action@v1
+      #   with:
+      #     version: "10.0"
+      # - name: Symlink libclang.so (Linux)
+      #   run: sudo ln -s libclang-11.so.1 /lib/x86_64-linux-gnu/libclang.so
+      #   working-directory: ${{ env.LLVM_PATH }}/lib
+      - name: Compile and release
+        uses: rust-build/rust-build.action@v1.4.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          RUSTTARGET: ${{ matrix.target }}
+          # SRC_DIR: ${{ matrix.package }}
+          # STATIC_LINKING: false
+          UPLOAD_MODE: none
+      - name: Check output
+        run: ls -laR output
