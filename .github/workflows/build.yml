@@ -20,7 +20,7 @@ jobs:
       - name: Archive release
         run: tar -zcvf release.tar.gz --exclude=target/release/build --exclude=target/release/deps --exclude=target/release/examples --exclude=target/release/incremental --exclude=target/release/.fingerprint target/release
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Release
           path: release.tar.gz
