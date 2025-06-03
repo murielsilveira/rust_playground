@@ -12,4 +12,15 @@ pub fn run() {
     let local_naive = tz.from_utc_datetime(&utc_date.naive_utc()).date_naive();
 
     println!("{} {}", utc_date, local_naive);
+
+    let now = Utc::now().date_naive().and_hms_opt(23, 5, 0).unwrap();
+    let t1 = now.format("%Y%m%d").to_string();
+    let t2 = now
+        .and_local_timezone(Utc)
+        .unwrap()
+        .with_timezone(&chrono_tz::Europe::London)
+        .format("%Y%m%d")
+        .to_string();
+
+    println!("UTC: {} London: {}", t1, t2);
 }
