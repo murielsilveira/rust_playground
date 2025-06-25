@@ -23,4 +23,6 @@ pub fn run() {
         .to_string();
 
     println!("UTC: {} London: {}", t1, t2);
+
+    println!("{}", Utc::now().format("%Y%m%d_%H%M_%S_%3f"));
 }
