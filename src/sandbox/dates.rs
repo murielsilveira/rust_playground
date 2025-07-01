@@ -24,5 +24,7 @@ pub fn run() {
 
     println!("UTC: {} London: {}", t1, t2);
 
-    println!("{}", Utc::now().format("%Y%m%d_%H%M_%S_%3f"));
+    println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S.%3f"));
+    println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S%.3f"));
+    println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S.%3f"));
 }
