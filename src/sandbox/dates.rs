@@ -1,4 +1,4 @@
-use chrono::{DateTime, NaiveDate, TimeZone, Utc};
+use chrono::{DateTime, NaiveDate, NaiveDateTime, TimeZone, Utc};
 use chrono_tz::Tz;
 
 pub fn run() {
@@ -28,4 +28,14 @@ pub fn run() {
     println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S%.3f"));
     println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S.%3f"));
     println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S.%f")); // give 9 "decimals"
+
+    println!("{:?}", parse_ts("2025-10-10 10:10:10.12345678901234"));
+    println!("{:?}", parse_ts("2025-10-10 10:10:10"));
+}
+
+pub fn parse_ts(date: &str) -> DateTime<Utc> {
+    DateTime::from_naive_utc_and_offset(
+        NaiveDateTime::parse_from_str(date, "%Y-%m-%d %H:%M:%S%.f").unwrap(),
+        Utc,
+    )
 }
