@@ -27,4 +27,5 @@ pub fn run() {
     println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S.%3f"));
     println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S%.3f"));
     println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S.%3f"));
+    println!("{}", Utc::now().format("%Y-%m-%dT%H:%M:%S.%f")); // give 9 "decimals"
 }
