@@ -17,12 +17,13 @@ async fn main() {
     // let now = Local::now();
     // println!("now: {}", now);
 
-    let name = "directory/asdf.qwer.20250729220127.{{filename}}.txn";
-    let b = Path::new(name);
-    let c = b.file_name();
-    println!("{:?}", b);
-    println!("{:?}", c);
-    println!("{:?}", sanitize_filename_reader_friendly::sanitize(name));
+    let name = "{{filename}}.txn.csv";
+    let full = format!("directory/{}", name);
+    let path = Path::new(&full);
+    let sanitized = sanitize_filename_reader_friendly::sanitize(name);
+    println!("Path:           {:?}", path);
+    println!("Path file name: {:?}", path.file_name());
+    println!("Sanitized:      {:?}", sanitized);
 
     // let u = Url::from_str("ssh://localhost:2020").unwrap();
     // println!("{:?}", u.port());
