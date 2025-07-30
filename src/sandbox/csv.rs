@@ -5,7 +5,7 @@ use std::error::Error;
 pub fn run() {
     // let result = write_csv();
     // println!("CSV: {:?}", result);
-    read_csv();
+    let _ = read_csv();
 }
 
 fn write_csv() -> Result<(), Box<dyn Error>> {

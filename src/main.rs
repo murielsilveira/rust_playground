@@ -1,27 +1,28 @@
-#![allow(dead_code, unused)]
+#![allow(dead_code)]
 
-use std::{path::Path, str::FromStr};
-
-use chrono::Local;
-use lettre::Address;
-use url::Url;
+use std::path::Path;
 
 mod sandbox;
 
-fn main() {
+#[tokio::main]
+async fn main() {
     // sandbox::traits::run();
     // sandbox::decimals::run();
     // sandbox::defaults::run();
     // sandbox::excel::run();
     // sandbox::dates::run();
-    sandbox::csv::run();
+    // sandbox::csv::run();
 
     // use TZ=Europe/London
     // let now = Local::now();
     // println!("now: {}", now);
 
-    // let b = Path::new("../test.csv");
-    // println!("{:?}", b.file_name().map(|n| n.to_ascii_lowercase()));
+    let name = "directory/asdf.qwer.20250729220127.{{filename}}.txn";
+    let b = Path::new(name);
+    let c = b.file_name();
+    println!("{:?}", b);
+    println!("{:?}", c);
+    println!("{:?}", sanitize_filename_reader_friendly::sanitize(name));
 
     // let u = Url::from_str("ssh://localhost:2020").unwrap();
     // println!("{:?}", u.port());
